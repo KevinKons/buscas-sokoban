@@ -1,0 +1,16 @@
+12x7
+ #####
+##   ##
+#    @#
+#$#####
+#  ...#
+# $ $ #
+#...$ #
+#### ##
+#     #
+# $$  #
+##   ##
+ #####
+
+; Dataset:  Alberto (http://www.sourcecode.se/sokoban/levels?act=dnl_text&file=Alberto.slc)
+; Instance: Level 3

@@ -1,0 +1,10 @@
+6x8
+########
+#      #
+# .**$@#
+#      #
+#####  #
+   ####
+
+; Dataset:  natebrennand (https://github.com/natebrennand/Sokoban/tree/master/sokoban_boards)
+; Instance: moderate_5

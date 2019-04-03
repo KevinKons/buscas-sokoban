@@ -1,0 +1,11 @@
+7x9
+ ####### 
+##     ##
+#    $ @#
+# $.$$. #
+# $..$. #
+# $..$. #
+#########
+
+; Dataset:  AC Easy (http://www.sourcecode.se/sokoban/levels?act=dnl_text&file=AC_Easy.slc)
+; Instance: Adaptacao da Instancia AC_Easy Outside In   
