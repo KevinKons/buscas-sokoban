@@ -1,5 +1,7 @@
 package model;
 
+import jomi.Estado;
+
 import java.util.List;
 
 public class EstadoSokoban implements Estado {

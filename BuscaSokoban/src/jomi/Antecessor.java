@@ -1,4 +1,4 @@
-package model;
+package jomi;
 
 /**
  * Interface para estados que tem a função antecessores
