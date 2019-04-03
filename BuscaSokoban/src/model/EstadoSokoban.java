@@ -5,6 +5,7 @@ import jomi.Estado;
 import java.util.List;
 
 public class EstadoSokoban implements Estado {
+
     @Override
     public String getDescricao() {
         return "O problema consiste em um jogador " +
@@ -12,8 +13,15 @@ public class EstadoSokoban implements Estado {
                 "chave no tabuleiro";
     }
 
+    private Tabuleiro tabuleiro;
+
+    public EstadoSokoban(Tabuleiro tabuleiro) {
+        this.tabuleiro = tabuleiro;
+    }
+
     @Override
     public boolean ehMeta() {
+
         return false;
     }
 
