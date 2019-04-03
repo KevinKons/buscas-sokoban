@@ -9,11 +9,10 @@ import java.util.logging.Logger;
 
 public class LeitorArquivo {
 
-    // Um método de leitura que retorna um Tabuleiro
-    // nomeArquivo.txt
     public Tabuleiro ler(String nomeArquivo) throws Exception {
 
-        int[][] tabuleiro;
+        char[][] tabuleiro;
+        int qtdCaixas = 0;
         boolean primeiraLinha = true;
 
         try {
@@ -24,11 +23,11 @@ public class LeitorArquivo {
                 if (primeiraLinha) {
                     int x = (int) str.charAt(0);
                     int y = (int) str.charAt(2);
-                    tabuleiro = new int[x][y];
+                    tabuleiro = new char[x][y];
                     primeiraLinha = false;
                 }
 
-
+                
 
             }
         } catch (FileNotFoundException ex) {
