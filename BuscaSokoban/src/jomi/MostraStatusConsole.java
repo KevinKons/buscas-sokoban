@@ -1,4 +1,4 @@
-package model;
+package jomi;
 
 /** mostra os dados de um status de busca */
 public class MostraStatusConsole extends Thread {

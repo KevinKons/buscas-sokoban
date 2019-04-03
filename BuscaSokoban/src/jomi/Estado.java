@@ -1,4 +1,4 @@
-package model;
+package jomi;
 
 import java.util.List;
 
