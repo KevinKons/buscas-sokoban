@@ -2,7 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0ba7f17-289b-45bb-b9d8-651b6a4f3e1d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/out/production/buscas-sokoban/META-INF/buscas-sokoban.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/buscas-sokoban/model/Coordenada.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/buscas-sokoban/util/LeitorArquivo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alberto(1).txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buscas-sokoban.iml" beforeDir="false" afterPath="$PROJECT_DIR$/buscas-sokoban.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/buscas-sokoban/model/EstadoSokoban.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/buscas-sokoban/model/EstadoSokoban.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/buscas-sokoban/model/Tabuleiro.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/buscas-sokoban/model/Tabuleiro.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/buscas-sokoban/model/EstadoSokobanTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/buscas-sokoban/model/EstadoSokobanTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Coordenada.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Coordenada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/LeitorArquivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/LeitorArquivo.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,9 +55,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/EstadoSokoban.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="59" column="20" lean-forward="true" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="20" />
+            <state relative-caret-position="102">
+              <caret line="59" column="20" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="20" />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/buscas-sokoban.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-35" />
           </provider>
         </entry>
       </file>
@@ -49,7 +72,7 @@
         <entry file="file://$PROJECT_DIR$/src/util/Verificacoes.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+              <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -60,13 +83,6 @@
             <state relative-caret-position="34">
               <caret line="2" column="44" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
               <folding>
-                <element signature="e#189#190#0" expanded="true" />
-                <element signature="e#213#214#0" expanded="true" />
-                <element signature="e#244#245#0" expanded="true" />
-                <element signature="e#270#271#0" expanded="true" />
-                <element signature="e#295#296#0" expanded="true" />
-                <element signature="e#319#320#0" expanded="true" />
-                <element signature="e#350#351#0" expanded="true" />
                 <element signature="e#376#377#0" expanded="true" />
               </folding>
             </state>
@@ -89,8 +105,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+            <state relative-caret-position="102">
+              <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -156,51 +172,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="BuscaSokoban" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BuscaSokoban" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BuscaSokoban" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BuscaSokoban" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BuscaSokoban" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BuscaSokoban" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="jomi" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BuscaSokoban" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BuscaSokoban" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BuscaSokoban" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BuscaSokoban" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BuscaSokoban" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BuscaSokoban" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BuscaSokoban" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BuscaSokoban" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -258,12 +230,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1473000" />
+    <option name="totallyTimeSpent" value="1728000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13486141" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13486141" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -278,10 +250,10 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4989339" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4989339" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="11" sideWeight="0.5010661" side_tool="true" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5010661" side_tool="true" visible="true" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -297,6 +269,30 @@
     <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
@@ -329,13 +325,6 @@
     <entry file="file://$PROJECT_DIR$/src/model/Busca.java" />
     <entry file="file://$PROJECT_DIR$/src/model/MostraStatusConsole.java" />
     <entry file="file://$PROJECT_DIR$/src/model/BuscaLargura.java" />
-    <entry file="file://$PROJECT_DIR$/src/model/EstadoSokoban.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="59" column="20" lean-forward="true" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/BuscaProfundidade.java" />
     <entry file="file://$PROJECT_DIR$/src/model/AEstrela.java" />
     <entry file="file://$PROJECT_DIR$/src/jomi/BuscaHeuristica.java">
@@ -373,6 +362,25 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/EstadoSokoban.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="59" column="20" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buscas-sokoban.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-35" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/Verificacoes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
         </state>
       </provider>
     </entry>
