@@ -6,6 +6,8 @@ import util.Verificacoes;
 import java.util.LinkedList;
 import java.util.List;
 
+import static util.Verificacoes.contemDeadSquare;
+
 public class EstadoSokoban implements Estado, Cloneable {
 
     @Override
@@ -39,7 +41,7 @@ public class EstadoSokoban implements Estado, Cloneable {
                         return false;
                     case '*':
                         qntCaixaNaMeta++;
-                        if(qntCaixaNaMeta == tabuleiro.getQntCaixas())
+                        if(qntCaixaNaMeta == tabuleiro.getCaixas().size())
                             return true;
                 }
             }
@@ -101,11 +103,8 @@ public class EstadoSokoban implements Estado, Cloneable {
     }
 
     /** returna true se o estado e valido */
-    private boolean ehValido(Estado estado){
-
-
-
-        return true;
+    private boolean ehValido(Tabuleiro tabuleiro){
+        return contemDeadSquare(tabuleiro);
     }
 
 }

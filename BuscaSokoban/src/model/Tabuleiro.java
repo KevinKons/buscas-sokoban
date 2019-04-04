@@ -1,15 +1,17 @@
 package model;
 
+import java.util.List;
+
 public class Tabuleiro {
 
     private char[][] tabuleiro;
-    private int qntCaixas;
+    private List<Coordenada> caixas;
     private Coordenada posSokoban;
 
-    public Tabuleiro(char[][] tabuleiro, int qntCaixas, Coordenada posSokoban) {
+    public Tabuleiro(char[][] tabuleiro, List<Coordenada> caixas, Coordenada posSokoban) {
         this.tabuleiro = tabuleiro;
-        this.qntCaixas = qntCaixas;
         this.posSokoban = posSokoban;
+        this.caixas = caixas;
     }
 
     public char[][] getTabuleiro() {
@@ -20,12 +22,12 @@ public class Tabuleiro {
         this.tabuleiro = tabuleiro;
     }
 
-    public int getQntCaixas() {
-        return qntCaixas;
+    public List<Coordenada> getCaixas() {
+        return caixas;
     }
 
-    public void setQntCaixas(int qntCaixas) {
-        this.qntCaixas = qntCaixas;
+    public void setCaixas(List<Coordenada> caixas) {
+        this.caixas = caixas;
     }
 
     public Coordenada getPosSokoban() {
