@@ -1,6 +1,6 @@
 package model;
 
-public class Coordenada {
+public class Coordenada implements Cloneable {
 
     private int x;
     private int y;

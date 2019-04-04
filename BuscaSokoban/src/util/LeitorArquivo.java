@@ -26,9 +26,6 @@ public class LeitorArquivo {
                     tabuleiro = new char[x][y];
                     primeiraLinha = false;
                 }
-
-                
-
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ex.getMessage());
