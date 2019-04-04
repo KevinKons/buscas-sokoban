@@ -4,10 +4,12 @@ public class Tabuleiro {
 
     private char[][] tabuleiro;
     private int qntCaixas;
+    private Coordenada posSokoban;
 
-    public Tabuleiro(char[][] tabuleiro, int qntCaixas) {
+    public Tabuleiro(char[][] tabuleiro, int qntCaixas, Coordenada posSokoban) {
         this.tabuleiro = tabuleiro;
         this.qntCaixas = qntCaixas;
+        this.posSokoban = posSokoban;
     }
 
     public char[][] getTabuleiro() {
@@ -24,5 +26,13 @@ public class Tabuleiro {
 
     public void setQntCaixas(int qntCaixas) {
         this.qntCaixas = qntCaixas;
+    }
+
+    public Coordenada getPosSokoban() {
+        return posSokoban;
+    }
+
+    public void setPosSokoban(Coordenada posSokoban) {
+        this.posSokoban = posSokoban;
     }
 }
