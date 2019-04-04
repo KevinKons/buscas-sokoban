@@ -69,8 +69,8 @@ public class EstadoSokoban implements Estado, Cloneable {
         if(Verificacoes.ehPosicaoVaziaOuObjetivo(coordenadaCima, matriz)) {
             EstadoSokoban novoEstado = geraNovoEstadoPosicaoVaziaOuObjetivo(coordenadaSokoban, coordenadaCima);
         } else if(Verificacoes.ehPosicaoComCaixa(coordenadaCima, matriz)) {
-//            Coordenada coordenada
-//            if(Verificacoes.podeEmpurrar(coordenadaCima, ))
+            Coordenada coordenadaAcimaCaixa = coordenadaCima; coordenadaAcimaCaixa.setY(coordenadaCima.getY() - 1);
+            if(Verificacoes.podeEmpurrar(coordenadaAcimaCaixa, matriz));
         }
 
     }
@@ -78,7 +78,7 @@ public class EstadoSokoban implements Estado, Cloneable {
     private EstadoSokoban geraNovoEstadoPosicaoVaziaOuObjetivo(Coordenada coordenadaSokoban, Coordenada novaCoordenada)
             throws CloneNotSupportedException {
         EstadoSokoban novoEstado = (EstadoSokoban) this.clone();
-        char[][] matriz = novoEstado.tabuleiro.getTabuleiro();
+    char[][] matriz = novoEstado.tabuleiro.getTabuleiro();
 
         //decide novo elemento para a posição atual do sokoban
         char elementoPosSokoban = matriz[coordenadaSokoban.getX()][coordenadaSokoban.getY()];
