@@ -31,23 +31,25 @@ public class LeitorArquivo {
                     int y = (int) str.charAt(2);
                     tabuleiro = new char[x][y];
                     primeiraLinha = false;
-                }
-                // Percorrendo a linha atual do arquivo texto
-                for (int i = 0; i < str.length() - 1; i++) {
-                    // Gravando as informações do arquivo texto na matriz de Char
-                    tabuleiro[linha][i] = str.charAt(i);
-                    //Contando a quantidade de caixas np mapa
-                    if (String.valueOf(str.charAt(i)).equals("$")) {
-                        qtdCaixas++;
+                } else {
+                    // Percorrendo a linha atual do arquivo texto
+                    for (int i = 0; i < str.length() - 1; i++) {
+                        // Gravando as informações do arquivo texto na matriz de Char
+                        tabuleiro[linha][i] = str.charAt(i);
+                        //Contando a quantidade de caixas np mapa
+                        if (String.valueOf(str.charAt(i)).equals("$")) {
+                            qtdCaixas++;
+                        }
+                        //Pegando a coordenada do player Sokoban
+                        if (String.valueOf(str.charAt(i)).equals("@")) {
+                            posSokoban = new Coordenada(i, linha);
+                        }
                     }
-                    //Pegando a coordenada do player Sokoban
-                    if (String.valueOf(str.charAt(i)).equals("@")) {
-                        posSokoban = new Coordenada(i, linha);
-                    }
+                    linha++;
                 }
+
 //                System.out.println(posSokoban.toString());
 
-                linha++;
 
             }
         } catch (IOException ex) {
