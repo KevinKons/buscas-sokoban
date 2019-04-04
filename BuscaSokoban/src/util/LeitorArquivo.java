@@ -1,5 +1,6 @@
 package util;
 
+import model.Coordenada;
 import model.Tabuleiro;
 
 import java.io.BufferedReader;
@@ -14,6 +15,7 @@ public class LeitorArquivo {
 
         char[][] tabuleiro = new char[0][];
         int qtdCaixas = 0;
+        Coordenada posSokoban = new Coordenada(0, 0);
         int linha = 0;
         boolean primeiraLinha = true;
 
@@ -30,14 +32,20 @@ public class LeitorArquivo {
                     tabuleiro = new char[x][y];
                     primeiraLinha = false;
                 }
-                // Gravando as informações do arquivo texto na matriz de Char
+                // Percorrendo a linha atual do arquivo texto
                 for (int i = 0; i < str.length() - 1; i++) {
+                    // Gravando as informações do arquivo texto na matriz de Char
                     tabuleiro[linha][i] = str.charAt(i);
+                    //Contando a quantidade de caixas np mapa
                     if (String.valueOf(str.charAt(i)).equals("$")) {
                         qtdCaixas++;
                     }
+                    //Pegando a coordenada do player Sokoban
+                    if (String.valueOf(str.charAt(i)).equals("@")) {
+                        posSokoban = new Coordenada(i, linha);
+                    }
                 }
-//                System.out.println(str);
+                System.out.println(posSokoban.toString());
 
                 linha++;
 
@@ -46,13 +54,13 @@ public class LeitorArquivo {
             System.out.println(ex.getMessage());
         }
 //        System.out.println("Quantidade caixas:" + qtdCaixas);
-        return new Tabuleiro(tabuleiro, 0);
+        return new Tabuleiro(tabuleiro, 0, posSokoban);
     }
 
-//    public static void main(String[] args) throws Exception {
-//
-//        ler("alberto(1).txt");
-//
-//    }
+    public static void main(String[] args) throws Exception {
+
+        ler("alberto(1).txt");
+
+    }
 
 }
