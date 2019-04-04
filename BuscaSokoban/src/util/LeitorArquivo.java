@@ -45,7 +45,7 @@ public class LeitorArquivo {
                         posSokoban = new Coordenada(i, linha);
                     }
                 }
-                System.out.println(posSokoban.toString());
+//                System.out.println(posSokoban.toString());
 
                 linha++;
 
@@ -57,10 +57,10 @@ public class LeitorArquivo {
         return new Tabuleiro(tabuleiro, 0, posSokoban);
     }
 
-    public static void main(String[] args) throws Exception {
-
-        ler("alberto(1).txt");
-
-    }
+//    public static void main(String[] args) throws Exception {
+//
+//        ler("alberto(1).txt");
+//
+//    }
 
 }
