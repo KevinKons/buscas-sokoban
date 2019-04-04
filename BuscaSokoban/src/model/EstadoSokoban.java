@@ -100,4 +100,12 @@ public class EstadoSokoban implements Estado, Cloneable {
         return novoEstado;
     }
 
+    /** returna true se o estado e valido */
+    private boolean ehValido(Estado estado){
+
+
+
+        return true;
+    }
+
 }
