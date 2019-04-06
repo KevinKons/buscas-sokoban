@@ -2,12 +2,12 @@ package model;
 
 public class Coordenada {
 
-    private int x;
     private int y;
+    private int x;
 
-    public Coordenada(int x, int y) {
-        this.x = x;
+    public Coordenada(int y, int x) {
         this.y = y;
+        this.x = x;
     }
 
     public int getX() {

@@ -2,22 +2,22 @@ package model;
 
 public class Tabuleiro {
 
-    private char[][] tabuleiro;
+    private char[][] matriz;
     private int qntCaixas;
     private Coordenada posSokoban;
 
     public Tabuleiro(char[][] tabuleiro, int qntCaixas, Coordenada posSokoban) {
-        this.tabuleiro = tabuleiro;
+        this.matriz = tabuleiro;
         this.qntCaixas = qntCaixas;
         this.posSokoban = posSokoban;
     }
 
-    public char[][] getTabuleiro() {
-        return tabuleiro;
+    public char[][] getMatriz() {
+        return matriz;
     }
 
-    public void setTabuleiro(char[][] tabuleiro) {
-        this.tabuleiro = tabuleiro;
+    public void setMatriz(char[][] matriz) {
+        this.matriz = matriz;
     }
 
     public int getQntCaixas() {
@@ -34,5 +34,18 @@ public class Tabuleiro {
 
     public void setPosSokoban(Coordenada posSokoban) {
         this.posSokoban = posSokoban;
+    }
+
+    @Override
+    public String toString() {
+        String resultado = "";
+
+        for(char[] vetor : matriz) {
+            for(char elemento : vetor) {
+                resultado += elemento + " ";
+            }
+            resultado = resultado + "\n";
+        }
+        return resultado;
     }
 }
