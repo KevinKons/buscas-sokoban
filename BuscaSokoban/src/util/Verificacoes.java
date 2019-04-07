@@ -27,6 +27,7 @@ public class Verificacoes {
     /** Verificação de Deadlocks **/
 
     // Dead square deadlocks
+    // Retorna false se não detectado Deadlock ou true se detectado
     public static boolean contemDeadSquare(Tabuleiro tabuleiro){
 
         // 1 - Percorrer a lista de caixas
@@ -52,7 +53,6 @@ public class Verificacoes {
              * 8 -> Y e X - 1
              */
 
-            //Verificando primeira possibilidade -> Y - 1 e X
             if(String.valueOf(tabuleiro.getMatriz()[y - 1][x]).equals("#") &&
                     String.valueOf(tabuleiro.getMatriz()[y][x - 1]).equals("#")){
                 return true;

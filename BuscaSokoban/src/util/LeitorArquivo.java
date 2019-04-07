@@ -6,10 +6,7 @@ import model.Tabuleiro;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class LeitorArquivo {
 
@@ -17,6 +14,7 @@ public class LeitorArquivo {
 
         char[][] tabuleiro = new char[0][];
         HashMap<Integer, Coordenada> caixas = new HashMap<>();
+        HashMap<Integer, Coordenada> objetivos = new HashMap<>();
         Coordenada posSokoban = new Coordenada(0, 0);
         int linha = 0;
         boolean primeiraLinha = true;
@@ -37,10 +35,15 @@ public class LeitorArquivo {
                     for (int i = 0; i < str.length(); i++) {
                         // Gravando as informações do arquivo texto na matriz de Char
                         tabuleiro[linha][i] = str.charAt(i);
-                        //Contando a coordenada de cada caixa no mapa
+                        //Armazenando cada caixa do mapa
                         if (String.valueOf(str.charAt(i)).equals("$")) {
                             //A key é a quantidade de caixas + 1
                             caixas.put(caixas.size() + 1, new Coordenada(linha, i));
+                        }
+                        //Armazenando cada pontoObjetivo do mapa
+                        if (String.valueOf(str.charAt(i)).equals(".")) {
+                            //A key é a quantidade de caixas + 1
+                            objetivos.put(caixas.size() + 1, new Coordenada(linha, i));
                         }
                         //Pegando a coordenada do player Sokoban
                         if (String.valueOf(str.charAt(i)).equals("@")) {
@@ -54,7 +57,7 @@ public class LeitorArquivo {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-        return new Tabuleiro(tabuleiro, caixas, posSokoban);
+        return new Tabuleiro(tabuleiro, caixas, objetivos, posSokoban);
     }
 
 //    public static void main(String[] args) throws Exception {
