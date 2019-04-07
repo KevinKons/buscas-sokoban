@@ -1,13 +1,15 @@
 package model;
 
+import java.util.Objects;
+
 public class Coordenada {
 
-    private int x;
     private int y;
+    private int x;
 
-    public Coordenada(int x, int y) {
-        this.x = x;
+    public Coordenada(int y, int x) {
         this.y = y;
+        this.x = x;
     }
 
     public int getX() {
@@ -24,6 +26,20 @@ public class Coordenada {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+        Coordenada that = (Coordenada) o;
+        return y == that.y &&
+                x == that.x;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(y, x);
     }
 
     @Override

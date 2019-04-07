@@ -1,6 +1,8 @@
 package model;
 
 import jomi.Estado;
+import util.AtribuiNovoElemento;
+import util.GeradorEstado;
 import util.Verificacoes;
 
 import java.util.LinkedList;
@@ -27,7 +29,7 @@ public class EstadoSokoban implements Estado, Cloneable {
 
     @Override
     public boolean ehMeta() {
-        char[][] matriz = tabuleiro.getTabuleiro();
+        char[][] matriz = tabuleiro.getMatriz();
         int qntCaixaNaMeta = 0;
 
         for(char[] vetor : matriz) {
@@ -58,53 +60,73 @@ public class EstadoSokoban implements Estado, Cloneable {
     public List<Estado> sucessores() {
         List<Estado> suc = new LinkedList<Estado>();
 
-//        andarParaCima(suc);
+        try {
+            andarParaCima(suc);
+            andarParaBaixo(suc);
+            andarParaEsquerda(suc);
+            andarParaDireita(suc);
+        } catch (CloneNotSupportedException ex) {
+            ex.printStackTrace();
+        }
         return null;
     }
 
-    private void andarParaCima(List<Estado> suc) throws CloneNotSupportedException {
-        char[][] matriz = tabuleiro.getTabuleiro();
+    public void andarParaDireita(List<Estado> suc) throws CloneNotSupportedException {
         Coordenada coordenadaSokoban = tabuleiro.getPosSokoban();
-        Coordenada coordenadaCima = coordenadaSokoban; coordenadaCima.setY(coordenadaSokoban.getY() - 1);
+        Coordenada coordenadaEsquerda =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() + 1);
+        Coordenada coordenadaFuturaCaixa =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() + 2);
 
-        //Coordenada cima é um pontoDeCaixa ou um local objetivo
-        if(Verificacoes.ehPosicaoVaziaOuObjetivo(coordenadaCima, matriz)) {
-            EstadoSokoban novoEstado = geraNovoEstadoPosicaoVaziaOuObjetivo(coordenadaSokoban, coordenadaCima);
-        } else if(Verificacoes.ehPosicaoComCaixa(coordenadaCima, matriz)) {
-            Coordenada coordenadaAcimaCaixa = coordenadaCima; coordenadaAcimaCaixa.setY(coordenadaCima.getY() - 1);
-            if(Verificacoes.podeEmpurrar(coordenadaAcimaCaixa, matriz));
-        }
-
+        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaEsquerda, coordenadaFuturaCaixa);
+        System.out.println(novoEstado.getTabuleiro().toString());
     }
 
-    private EstadoSokoban geraNovoEstadoPosicaoVaziaOuObjetivo(Coordenada coordenadaSokoban, Coordenada novaCoordenada)
-            throws CloneNotSupportedException {
-        EstadoSokoban novoEstado = (EstadoSokoban) this.clone();
-    char[][] matriz = novoEstado.tabuleiro.getTabuleiro();
+    public void andarParaEsquerda(List<Estado> suc) throws CloneNotSupportedException {
+        Coordenada coordenadaSokoban = tabuleiro.getPosSokoban();
+        Coordenada coordenadaEsquerda =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() - 1);
+        Coordenada coordenadaFuturaCaixa =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() - 2);
 
-        //decide novo elemento para a posição atual do sokoban
-        char elementoPosSokoban = matriz[coordenadaSokoban.getX()][coordenadaSokoban.getY()];
-        if(elementoPosSokoban == '@')
-            matriz[coordenadaSokoban.getX()][coordenadaSokoban.getY()] = ' ';
-        else if(elementoPosSokoban == '+')
-            matriz[coordenadaSokoban.getX()][coordenadaSokoban.getY()] = '.';
-
-        //decide elemento para a posição futura do sokoban
-        char elementoNovaCoordenada = matriz[novaCoordenada.getX()][novaCoordenada.getY()];
-        if(elementoNovaCoordenada == ' ')
-            matriz[novaCoordenada.getY()][novaCoordenada.getY()] = '@';
-        else if(elementoNovaCoordenada == '.')
-            matriz[novaCoordenada.getY()][novaCoordenada.getY()] = '+';
-
-        //seta nova pos sokoban
-        novoEstado.tabuleiro.setPosSokoban(novaCoordenada);
-
-        return novoEstado;
+        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaEsquerda, coordenadaFuturaCaixa);
+        System.out.println(novoEstado.getTabuleiro().toString());
     }
+
 
     /** returna true se o estado e valido */
-    private boolean ehValido(Tabuleiro tabuleiro){
+    private boolean ehValido(Tabuleiro tabuleiro) {
         return contemDeadSquare(tabuleiro);
     }
+    public void andarParaBaixo(List<Estado> suc) throws CloneNotSupportedException {
+        Coordenada coordenadaSokoban = tabuleiro.getPosSokoban();
+        Coordenada coordenadaBaixo =  new Coordenada(coordenadaSokoban.getY() + 1, coordenadaSokoban.getX());
+        Coordenada coordenadaFuturaCaixa =  new Coordenada(coordenadaSokoban.getY() + 2, coordenadaSokoban.getX());
 
+        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaBaixo, coordenadaFuturaCaixa);
+        System.out.println(novoEstado.getTabuleiro().toString());
+
+//        if(!causaDeadLock()) {
+//            suc.add(novoEstado);
+//        }
+    }
+
+    public void andarParaCima(List<Estado> suc) throws CloneNotSupportedException {
+        Coordenada coordenadaSokoban = tabuleiro.getPosSokoban();
+        Coordenada coordenadaCima = new Coordenada(coordenadaSokoban.getY() - 1, coordenadaSokoban.getX());
+        Coordenada coordenadaFuturaCaixa = new Coordenada(coordenadaSokoban.getY() - 2, coordenadaSokoban.getX());
+
+        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaCima, coordenadaFuturaCaixa);
+        System.out.println(novoEstado.getTabuleiro().toString());
+
+//        if(!causaDeadLock()) {
+//            suc.add(novoEstado);
+//        }
+
+    }
+
+
+    public Tabuleiro getTabuleiro() {
+        return tabuleiro;
+    }
+
+    public EstadoSokoban clone() {
+        return new EstadoSokoban(tabuleiro);
+    }
 }
