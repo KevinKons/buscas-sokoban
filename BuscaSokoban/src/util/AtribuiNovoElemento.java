@@ -25,7 +25,7 @@ public class AtribuiNovoElemento {
         char elementoAtualFuturaCoordenadaSokoban = matriz[futuraCoordenada.getY()][futuraCoordenada.getX()];
         if(elementoAtualFuturaCoordenadaSokoban == ' ' || elementoAtualFuturaCoordenadaSokoban == '$')
             matriz[futuraCoordenada.getY()][futuraCoordenada.getX()] = '@';
-        else if(elementoAtualFuturaCoordenadaSokoban == '.')
+        else if(elementoAtualFuturaCoordenadaSokoban == '.' || elementoAtualFuturaCoordenadaSokoban == '*')
             matriz[futuraCoordenada.getY()][futuraCoordenada.getX()] = '+';
     }
 

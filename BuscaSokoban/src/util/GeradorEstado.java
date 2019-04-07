@@ -10,14 +10,14 @@ public class GeradorEstado {
         char[][] matriz = novoEstado.getTabuleiro().getMatriz();
 
         if(Verificacoes.ehPosicaoVaziaOuObjetivo(coordenadaAvancandoUm, matriz)) {
-            novoEstado = geraNovoEstadoPosicaoDestinoVaziaOuObjetivo(novoEstado, coordenadaAvancandoUm);
+            return geraNovoEstadoPosicaoDestinoVaziaOuObjetivo(novoEstado, coordenadaAvancandoUm);
         } else if(Verificacoes.ehPosicaoComCaixa(coordenadaAvancandoUm, matriz)) {
             if(Verificacoes.podeEmpurrar(coordenadaAvancandoDois, matriz)) {
-                novoEstado = geraNovoEstadoEmpurrandoCaixa(novoEstado, coordenadaAvancandoUm, coordenadaAvancandoDois);
+                return geraNovoEstadoEmpurrandoCaixa(novoEstado, coordenadaAvancandoUm, coordenadaAvancandoDois);
             }
         }
 
-        return novoEstado;
+        return null;
     }
 
     private static EstadoSokoban geraNovoEstadoPosicaoDestinoVaziaOuObjetivo(EstadoSokoban novoEstado,

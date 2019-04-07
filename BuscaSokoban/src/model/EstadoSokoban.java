@@ -61,16 +61,43 @@ public class EstadoSokoban implements Estado, Cloneable {
         try {
             andarParaCima(suc);
             andarParaBaixo(suc);
+            andarParaEsquerda(suc);
+            andarParaDireita(suc);
         } catch (CloneNotSupportedException ex) {
             ex.printStackTrace();
         }
         return null;
     }
 
-    private void andarParaBaixo(List<Estado> suc) {
-        char[][] matriz = tabuleiro.getMatriz();
+    public void andarParaDireita(List<Estado> suc) throws CloneNotSupportedException {
         Coordenada coordenadaSokoban = tabuleiro.getPosSokoban();
-        Coordenada coordenadaBaixo = coordenadaSokoban; coordenadaBaixo.setY(coordenadaSokoban.getY() + 1);
+        Coordenada coordenadaEsquerda =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() + 1);
+        Coordenada coordenadaFuturaCaixa =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() + 2);
+
+        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaEsquerda, coordenadaFuturaCaixa);
+        System.out.println(novoEstado.getTabuleiro().toString());
+    }
+
+    public void andarParaEsquerda(List<Estado> suc) throws CloneNotSupportedException {
+        Coordenada coordenadaSokoban = tabuleiro.getPosSokoban();
+        Coordenada coordenadaEsquerda =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() - 1);
+        Coordenada coordenadaFuturaCaixa =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() - 2);
+
+        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaEsquerda, coordenadaFuturaCaixa);
+        System.out.println(novoEstado.getTabuleiro().toString());
+    }
+
+    public void andarParaBaixo(List<Estado> suc) throws CloneNotSupportedException {
+        Coordenada coordenadaSokoban = tabuleiro.getPosSokoban();
+        Coordenada coordenadaBaixo =  new Coordenada(coordenadaSokoban.getY() + 1, coordenadaSokoban.getX());
+        Coordenada coordenadaFuturaCaixa =  new Coordenada(coordenadaSokoban.getY() + 2, coordenadaSokoban.getX());
+
+        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaBaixo, coordenadaFuturaCaixa);
+        System.out.println(novoEstado.getTabuleiro().toString());
+
+//        if(!causaDeadLock()) {
+//            suc.add(novoEstado);
+//        }
     }
 
     public void andarParaCima(List<Estado> suc) throws CloneNotSupportedException {
@@ -81,9 +108,9 @@ public class EstadoSokoban implements Estado, Cloneable {
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaCima, coordenadaFuturaCaixa);
         System.out.println(novoEstado.getTabuleiro().toString());
 
-        if(!causaDeadLock()) {
-            suc.add(novoEstado);
-        }
+//        if(!causaDeadLock()) {
+//            suc.add(novoEstado);
+//        }
 
     }
 
