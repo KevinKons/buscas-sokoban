@@ -1,13 +1,12 @@
 package model;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Tabuleiro {
 
     private Map<Integer, Coordenada> caixas;
-    private char[][] matriz;
+    private char[][] matriz; // Y e X
     private Coordenada posSokoban;
 
     public Tabuleiro(char[][] matriz, HashMap<Integer, Coordenada> caixas, Coordenada posSokoban) {
