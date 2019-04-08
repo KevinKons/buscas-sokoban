@@ -9,6 +9,7 @@ public class Tabuleiro {
     private Map<Integer, Coordenada> caixas;
     private Map<Integer, Coordenada> objetivos;
     private Coordenada posSokoban;
+    private int NADA = 0;
 
     public Tabuleiro(char[][] matriz, HashMap<Integer, Coordenada> caixas, Coordenada posSokoban) {
         this.matriz= matriz;
