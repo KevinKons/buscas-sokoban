@@ -1,15 +1,19 @@
 package model;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Tabuleiro {
 
+    private Map<Integer, Coordenada> caixas;
     private char[][] matriz;
-    private int qntCaixas;
     private Coordenada posSokoban;
 
-    public Tabuleiro(char[][] tabuleiro, int qntCaixas, Coordenada posSokoban) {
-        this.matriz = tabuleiro;
-        this.qntCaixas = qntCaixas;
+    public Tabuleiro(char[][] matriz, HashMap<Integer, Coordenada> caixas, Coordenada posSokoban) {
+        this.matriz= matriz;
         this.posSokoban = posSokoban;
+        this.caixas = caixas;
     }
 
     public char[][] getMatriz() {
@@ -20,12 +24,16 @@ public class Tabuleiro {
         this.matriz = matriz;
     }
 
-    public int getQntCaixas() {
-        return qntCaixas;
+    public Map<Integer, Coordenada> getCaixas() {
+        return caixas;
     }
 
-    public void setQntCaixas(int qntCaixas) {
-        this.qntCaixas = qntCaixas;
+    public void setCaixas(Map<Integer, Coordenada> caixas) {
+        this.caixas = caixas;
+    }
+
+    public void addCaixa(int key, Coordenada coordenada){
+        this.caixas.put(key, coordenada);
     }
 
     public Coordenada getPosSokoban() {
@@ -42,7 +50,7 @@ public class Tabuleiro {
 
         for(char[] vetor : matriz) {
             for(char elemento : vetor) {
-                resultado += elemento + " ";
+                resultado += elemento+"";
             }
             resultado = resultado + "\n";
         }

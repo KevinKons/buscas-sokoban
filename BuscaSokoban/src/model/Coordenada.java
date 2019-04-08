@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class Coordenada {
 
     private int y;
@@ -24,5 +26,27 @@ public class Coordenada {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+        Coordenada that = (Coordenada) o;
+        return y == that.y &&
+                x == that.x;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(y, x);
+    }
+
+    @Override
+    public String toString() {
+        return "Coordenada{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

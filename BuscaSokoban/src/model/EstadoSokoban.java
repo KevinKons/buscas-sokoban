@@ -8,6 +8,8 @@ import util.Verificacoes;
 import java.util.LinkedList;
 import java.util.List;
 
+import static util.Verificacoes.contemDeadSquare;
+
 public class EstadoSokoban implements Estado, Cloneable {
 
     @Override
@@ -41,7 +43,7 @@ public class EstadoSokoban implements Estado, Cloneable {
                         return false;
                     case '*':
                         qntCaixaNaMeta++;
-                        if(qntCaixaNaMeta == tabuleiro.getQntCaixas())
+                        if(qntCaixaNaMeta == tabuleiro.getCaixas().size())
                             return true;
                 }
             }
@@ -87,6 +89,11 @@ public class EstadoSokoban implements Estado, Cloneable {
         System.out.println(novoEstado.getTabuleiro().toString());
     }
 
+
+    /** returna true se o estado e valido */
+    private boolean ehValido(Tabuleiro tabuleiro) {
+        return contemDeadSquare(tabuleiro);
+    }
     public void andarParaBaixo(List<Estado> suc) throws CloneNotSupportedException {
         Coordenada coordenadaSokoban = tabuleiro.getPosSokoban();
         Coordenada coordenadaBaixo =  new Coordenada(coordenadaSokoban.getY() + 1, coordenadaSokoban.getX());
@@ -112,10 +119,6 @@ public class EstadoSokoban implements Estado, Cloneable {
 //            suc.add(novoEstado);
 //        }
 
-    }
-
-    private boolean causaDeadLock() {
-        return false;
     }
 
 
