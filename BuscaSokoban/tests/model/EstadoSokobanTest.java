@@ -4,7 +4,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -21,8 +23,7 @@ public class EstadoSokobanTest {
                 {'#',' ',' ',' ',' ',' ',' ',' ',' ','#'},
                 {'#','#','#','#','#','#','#','#','#','#'}
         };
-        HashMap<Integer, Coordenada> caixas = new HashMap<>();
-        caixas.put(1, new Coordenada(2, 1));
+        List<Coordenada> caixas = new ArrayList<>();
         // Return matriz[][], HashMap de caixas e Coordenada do Player
         estadoSokoban = new EstadoSokoban(new Tabuleiro(matriz, caixas, new Coordenada(2, 4)));
     }

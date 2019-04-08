@@ -6,15 +6,17 @@ import model.Tabuleiro;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class LeitorArquivo {
 
     private static Tabuleiro ler(String nomeArquivo) throws Exception {
 
         char[][] tabuleiro = new char[0][];
-        HashMap<Integer, Coordenada> caixas = new HashMap<>();
-        HashMap<Integer, Coordenada> objetivos = new HashMap<>();
+        List<Coordenada> caixas = new ArrayList<>();
+        List<Coordenada> objetivos = new ArrayList<>();
         Coordenada posSokoban = new Coordenada(0, 0);
         int linha = 0;
         boolean primeiraLinha = true;
@@ -38,12 +40,12 @@ public class LeitorArquivo {
                         //Armazenando cada caixa do mapa
                         if (String.valueOf(str.charAt(i)).equals("$")) {
                             //A key é a quantidade de caixas + 1
-                            caixas.put(caixas.size() + 1, new Coordenada(linha, i));
+                            caixas.add(new Coordenada(linha, i));
                         }
                         //Armazenando cada pontoObjetivo do mapa
                         if (String.valueOf(str.charAt(i)).equals(".")) {
                             //A key é a quantidade de caixas + 1
-                            objetivos.put(caixas.size() + 1, new Coordenada(linha, i));
+                            objetivos.add(new Coordenada(linha, i));
                         }
                         //Pegando a coordenada do player Sokoban
                         if (String.valueOf(str.charAt(i)).equals("@")) {
@@ -60,16 +62,16 @@ public class LeitorArquivo {
         return new Tabuleiro(tabuleiro, caixas, objetivos, posSokoban);
     }
 
-//    public static void main(String[] args) throws Exception {
-//        Tabuleiro tabuleiro = ler("alberto(1).txt");
-//        System.out.println("Caixas: " + tabuleiro.getCaixas().size());
-//
-//        // i = 1 pois o primeiro registro do HashMap começa em 1
-//        for(int i = 1; i <= tabuleiro.getCaixas().size(); i++){
-//            System.out.println("Coordenada ("+i+"): " + tabuleiro.getCaixas().get(i).toString());
-//        }
-//
-//        System.out.println(tabuleiro.toString());
-//
-//    }
+    public static void main(String[] args) throws Exception {
+        Tabuleiro tabuleiro = ler("alberto(1).txt");
+        System.out.println("Caixas: " + tabuleiro.getCaixas().size());
+
+        // i = 1 pois o primeiro registro do HashMap começa em 1
+        for(int i = 0; i < tabuleiro.getCaixas().size(); i++){
+            System.out.println("Coordenada ("+i+"): " + tabuleiro.getCaixas().get(i).toString());
+        }
+
+        System.out.println(tabuleiro.toString());
+
+    }
 }
