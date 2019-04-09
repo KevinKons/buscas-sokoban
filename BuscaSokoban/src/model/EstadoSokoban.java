@@ -78,8 +78,13 @@ public class EstadoSokoban implements Estado, Cloneable {
 
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaEsquerda, coordenadaFuturaCaixa);
 
-        if(novoEstado != null)
+        if(novoEstado != null) {
+            System.out.println("oi");
+            System.out.println(novoEstado.getTabuleiro().toString());
             suc.add(novoEstado);
+        }else {
+            System.out.println("tchau");
+        }
 
     }
 
@@ -90,8 +95,13 @@ public class EstadoSokoban implements Estado, Cloneable {
 
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaEsquerda, coordenadaFuturaCaixa);
 
-        if(novoEstado != null)
+        if(novoEstado != null) {
+            System.out.println("oi");
+            System.out.println(novoEstado.getTabuleiro().toString());
             suc.add(novoEstado);
+        }else {
+            System.out.println("tchau");
+        }
     }
 
 
@@ -103,8 +113,14 @@ public class EstadoSokoban implements Estado, Cloneable {
 
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaBaixo, coordenadaFuturaCaixa);
 
-        if(novoEstado != null)
+        if(novoEstado != null) {
+            System.out.println("oi");
+            System.out.println(novoEstado.getTabuleiro().toString());
             suc.add(novoEstado);
+        }else {
+            System.out.println("tchau");
+        }
+
     }
 
     public void andarParaCima(List<Estado> suc) throws CloneNotSupportedException {
@@ -114,10 +130,16 @@ public class EstadoSokoban implements Estado, Cloneable {
 
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaCima, coordenadaFuturaCaixa);
 
-        if(novoEstado != null)
+        if(novoEstado != null) {
+            System.out.println("oi");
+            System.out.println(novoEstado.getTabuleiro().toString());
             suc.add(novoEstado);
+        } else {
+            System.out.println("tchau");
+        }
 
     }
+    //easy(1).txt
 
     /** returna true se o estado e valido */
     private boolean ehValido(Tabuleiro tabuleiro) {
