@@ -34,9 +34,9 @@ public class Verificacoes {
         // 2 - Verificar se a coordenadas anteriores ou posteriores são paredes na matriz
         for(int i = 0; i < tabuleiro.getCaixas().size(); i++){
 
-            // A Key do Map de caixas inicia em 1, por do isso i + 1 abaixo
-            int y = tabuleiro.getCaixas().get(i + 1).getY();
-            int x = tabuleiro.getCaixas().get(i + 1).getX();
+            // Capturando as coordenadas da caixa em iteração
+            int y = tabuleiro.getCaixas().get(i).getY();
+            int x = tabuleiro.getCaixas().get(i).getX();
 
             /**
              * Verificar possibilidades:
@@ -72,6 +72,23 @@ public class Verificacoes {
                     String.valueOf(tabuleiro.getMatriz()[y][x - 1]).equals("#")){
                 return true;
             }
+
+        }
+
+        return false;
+    }
+
+    // Closed Diagonal Deadlock
+    // Retorna false se não detectado Deadlock ou true se detectado
+    public static boolean contemClosedDiagonal (Tabuleiro tabuleiro){
+
+        /**
+         *  1 - Verificar se há 4 caixas juntas formando um cubo
+         */
+
+        for (int i = 0; i < tabuleiro.getCaixas().size(); i++){
+
+            
 
         }
 
