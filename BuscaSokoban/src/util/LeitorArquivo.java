@@ -11,7 +11,7 @@ import java.util.List;
 
 public class LeitorArquivo {
 
-    private static Tabuleiro ler(String nomeArquivo) throws Exception {
+    public static Tabuleiro ler(String nomeArquivo) {
 
         char[][] tabuleiro = new char[0][];
         List<Coordenada> caixas = new ArrayList<>();

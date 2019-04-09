@@ -68,7 +68,7 @@ public class EstadoSokoban implements Estado, Cloneable {
         } catch (CloneNotSupportedException ex) {
             ex.printStackTrace();
         }
-        return null;
+        return suc;
     }
 
     public void andarParaDireita(List<Estado> suc) throws CloneNotSupportedException {
@@ -77,7 +77,10 @@ public class EstadoSokoban implements Estado, Cloneable {
         Coordenada coordenadaFuturaCaixa =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() + 2);
 
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaEsquerda, coordenadaFuturaCaixa);
-        System.out.println(novoEstado.getTabuleiro().toString());
+
+        if(novoEstado != null)
+            suc.add(novoEstado);
+
     }
 
     public void andarParaEsquerda(List<Estado> suc) throws CloneNotSupportedException {
@@ -86,25 +89,22 @@ public class EstadoSokoban implements Estado, Cloneable {
         Coordenada coordenadaFuturaCaixa =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() - 2);
 
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaEsquerda, coordenadaFuturaCaixa);
-        System.out.println(novoEstado.getTabuleiro().toString());
+
+        if(novoEstado != null)
+            suc.add(novoEstado);
     }
 
 
-    /** returna true se o estado e valido */
-    private boolean ehValido(Tabuleiro tabuleiro) {
-        return contemDeadSquare(tabuleiro);
-    }
+
     public void andarParaBaixo(List<Estado> suc) throws CloneNotSupportedException {
         Coordenada coordenadaSokoban = tabuleiro.getPosSokoban();
         Coordenada coordenadaBaixo =  new Coordenada(coordenadaSokoban.getY() + 1, coordenadaSokoban.getX());
         Coordenada coordenadaFuturaCaixa =  new Coordenada(coordenadaSokoban.getY() + 2, coordenadaSokoban.getX());
 
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaBaixo, coordenadaFuturaCaixa);
-        System.out.println(novoEstado.getTabuleiro().toString());
 
-//        if(!causaDeadLock()) {
-//            suc.add(novoEstado);
-//        }
+        if(novoEstado != null)
+            suc.add(novoEstado);
     }
 
     public void andarParaCima(List<Estado> suc) throws CloneNotSupportedException {
@@ -113,12 +113,15 @@ public class EstadoSokoban implements Estado, Cloneable {
         Coordenada coordenadaFuturaCaixa = new Coordenada(coordenadaSokoban.getY() - 2, coordenadaSokoban.getX());
 
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaCima, coordenadaFuturaCaixa);
-        System.out.println(novoEstado.getTabuleiro().toString());
 
-//        if(!causaDeadLock()) {
-//            suc.add(novoEstado);
-//        }
+        if(novoEstado != null)
+            suc.add(novoEstado);
 
+    }
+
+    /** returna true se o estado e valido */
+    private boolean ehValido(Tabuleiro tabuleiro) {
+        return contemDeadSquare(tabuleiro);
     }
 
 
