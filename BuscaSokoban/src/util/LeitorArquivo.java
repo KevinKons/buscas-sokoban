@@ -37,7 +37,8 @@ public class LeitorArquivo {
                         // Gravando as informações do arquivo texto na matriz de Char
                         tabuleiro[linha][i] = str.charAt(i);
                         //Armazenando cada caixa do mapa
-                        if (String.valueOf(str.charAt(i)).equals("$")) {
+                        if (String.valueOf(str.charAt(i)).equals("$") ||
+                                String.valueOf(str.charAt(i)).equals("*")) {
                             //A key é a quantidade de caixas + 1
                             caixas.add(new Coordenada(linha, i));
                         }
@@ -47,7 +48,8 @@ public class LeitorArquivo {
                             objetivos.add(new Coordenada(linha, i));
                         }
                         //Pegando a coordenada do player Sokoban
-                        if (String.valueOf(str.charAt(i)).equals("@")) {
+                        if (String.valueOf(str.charAt(i)).equals("@") ||
+                                String.valueOf(str.charAt(i)).equals("+")) {
                             posSokoban = new Coordenada(i, linha);
                         }
                     }
