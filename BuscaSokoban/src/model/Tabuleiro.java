@@ -64,6 +64,15 @@ public class Tabuleiro {
         this.posSokoban = posSokoban;
     }
 
+    public void setNovaPosicaoCaixa(Coordenada coordenadaAntiga, Coordenada futuraCoordenada) {
+        for(Coordenada c : caixas) {
+            if(c.equals(coordenadaAntiga)) {
+                c.setY(futuraCoordenada.getY());
+                c.setX(futuraCoordenada.getX());
+            }
+        }
+    }
+
     @Override
     public String toString() {
         String resultado = "";

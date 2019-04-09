@@ -39,6 +39,8 @@ public class GeradorEstado {
         AtribuiNovoElemento.posicaoFuturaCaixa(novoEstado.getTabuleiro(), coordenadaFuturaCaixa);
 
         novoEstado.getTabuleiro().setPosSokoban(coordenadaFuturaSokoban);
+        novoEstado.getTabuleiro().setNovaPosicaoCaixa(coordenadaFuturaSokoban, coordenadaFuturaCaixa);
+
 
         return novoEstado;
 
