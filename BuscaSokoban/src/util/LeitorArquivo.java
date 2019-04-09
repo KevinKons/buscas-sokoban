@@ -50,7 +50,7 @@ public class LeitorArquivo {
                         //Pegando a coordenada do player Sokoban
                         if (String.valueOf(str.charAt(i)).equals("@") ||
                                 String.valueOf(str.charAt(i)).equals("+")) {
-                            posSokoban = new Coordenada(i, linha);
+                            posSokoban = new Coordenada(linha, i);
                         }
                     }
                     linha++;
