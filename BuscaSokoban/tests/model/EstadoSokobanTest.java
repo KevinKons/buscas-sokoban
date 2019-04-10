@@ -44,6 +44,7 @@ public class EstadoSokobanTest {
     @Test
     public void andarParaCima() throws CloneNotSupportedException {
         estadoSokoban.andarParaCima(null);
+        estadoSokoban.andarParaCima(null);
     }
 
 

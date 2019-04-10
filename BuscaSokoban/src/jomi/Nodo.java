@@ -1,8 +1,10 @@
 package jomi;
 
 
+import model.EstadoSokoban;
+
 /**
- * Representa um nodo da árvore de busca
+ * Representa um nodo da ï¿½rvore de busca
  */
 public class Nodo implements Comparable {
     
@@ -74,7 +76,7 @@ public class Nodo implements Comparable {
     
     
     /**
-     * testa se o nodo não tem um ascensor igual a ele
+     * testa se o nodo nï¿½o tem um ascensor igual a ele
      * (se um dos pais eh igual a ele)
      */
     boolean ehDescendenteNovo(Nodo ascensor) {
@@ -90,8 +92,8 @@ public class Nodo implements Comparable {
     }
     
     /**
-     * se dois nodos são iguais
-     * (por enquato, só verifica se os estados são iguais --
+     * se dois nodos sï¿½o iguais
+     * (por enquato, sï¿½ verifica se os estados sï¿½o iguais --
      *  usado no bi-direcional)
      */
     public boolean equals(Object o) {
@@ -104,7 +106,7 @@ public class Nodo implements Comparable {
         return false;
     }
     
-    /** utiliza o custo (g) como elemento de ordenação */
+    /** utiliza o custo (g) como elemento de ordenaï¿½ï¿½o */
     public int compareTo(Object obj) {
         try {
             Nodo outro = (Nodo)obj;
@@ -122,7 +124,7 @@ public class Nodo implements Comparable {
     }
     
     /**
-     *  imprime o caminho até a raíz
+     *  imprime o caminho atï¿½ a raï¿½z
      */
     public String montaCaminho() {
         return montaCaminho(this);
@@ -130,7 +132,7 @@ public class Nodo implements Comparable {
     
     public String montaCaminho(Nodo n) {
         if (n != null) {
-            return montaCaminho(n.pai) + n + "; ";
+            return ((EstadoSokoban) n.estado).getTabuleiro().toString() + montaCaminho(n.pai) + "\n";
         }
         return "";
     }

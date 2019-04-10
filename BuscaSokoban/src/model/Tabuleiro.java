@@ -1,10 +1,11 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Tabuleiro {
+public class Tabuleiro implements Cloneable {
 
     private char[][] matriz; // Y e X
     private List<Coordenada> caixas;
@@ -22,6 +23,10 @@ public class Tabuleiro {
         this.caixas = caixas;
         this.objetivos = objetivos;
         this.posSokoban = posSokoban;
+    }
+
+    public Tabuleiro() {
+
     }
 
     public char[][] getMatriz() {
@@ -84,5 +89,28 @@ public class Tabuleiro {
             resultado = resultado + "\n";
         }
         return resultado;
+    }
+
+    public Tabuleiro clonar() throws CloneNotSupportedException {
+        Tabuleiro clone = (Tabuleiro) clone();
+
+        clone.matriz = new char[matriz.length][matriz[0].length];
+        for(int i = 0; i < matriz.length; i++)
+            for(int j = 0; j < matriz[i].length; j++)
+                clone.matriz[i][j] = String.valueOf(matriz[i][j]).charAt(0);
+
+
+        clone.posSokoban = posSokoban.clonar();
+
+        clone.caixas = new ArrayList<>(caixas.size());
+        for(Coordenada caixa : caixas)
+            clone.caixas.add(caixa.clonar());
+
+        clone.objetivos = new ArrayList<>(objetivos.size());
+        for(Coordenada objetivo : objetivos)
+            clone.objetivos.add(objetivo.clonar());
+
+
+        return clone;
     }
 }

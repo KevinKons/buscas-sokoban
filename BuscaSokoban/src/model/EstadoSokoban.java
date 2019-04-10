@@ -32,8 +32,8 @@ public class EstadoSokoban implements Estado, Cloneable {
         char[][] matriz = tabuleiro.getMatriz();
         int qntCaixaNaMeta = 0;
 
-        for(char[] vetor : matriz) {
-            for(char elemento : vetor) {
+        for(char[] vetor : matriz)
+            for(char elemento : vetor)
                 switch (elemento) {
                     case '$':
                         return false;
@@ -46,8 +46,7 @@ public class EstadoSokoban implements Estado, Cloneable {
                         if(qntCaixaNaMeta == tabuleiro.getCaixas().size())
                             return true;
                 }
-            }
-        }
+
         return false;
     }
 
@@ -59,6 +58,9 @@ public class EstadoSokoban implements Estado, Cloneable {
     @Override
     public List<Estado> sucessores() {
         List<Estado> suc = new LinkedList<Estado>();
+
+        System.out.println("estado inicial");
+        System.out.println(tabuleiro.toString());
 
         try {
             andarParaCima(suc);
@@ -76,14 +78,13 @@ public class EstadoSokoban implements Estado, Cloneable {
         Coordenada coordenadaEsquerda =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() + 1);
         Coordenada coordenadaFuturaCaixa =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() + 2);
 
-        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaEsquerda, coordenadaFuturaCaixa);
+        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clonar(), coordenadaEsquerda, coordenadaFuturaCaixa);
 
         if(novoEstado != null) {
             System.out.println("oi");
             System.out.println(novoEstado.getTabuleiro().toString());
             suc.add(novoEstado);
         }else {
-            System.out.println("tchau");
         }
 
     }
@@ -93,14 +94,13 @@ public class EstadoSokoban implements Estado, Cloneable {
         Coordenada coordenadaEsquerda =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() - 1);
         Coordenada coordenadaFuturaCaixa =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() - 2);
 
-        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaEsquerda, coordenadaFuturaCaixa);
+        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clonar(), coordenadaEsquerda, coordenadaFuturaCaixa);
 
         if(novoEstado != null) {
             System.out.println("oi");
             System.out.println(novoEstado.getTabuleiro().toString());
             suc.add(novoEstado);
         }else {
-            System.out.println("tchau");
         }
     }
 
@@ -111,14 +111,13 @@ public class EstadoSokoban implements Estado, Cloneable {
         Coordenada coordenadaBaixo =  new Coordenada(coordenadaSokoban.getY() + 1, coordenadaSokoban.getX());
         Coordenada coordenadaFuturaCaixa =  new Coordenada(coordenadaSokoban.getY() + 2, coordenadaSokoban.getX());
 
-        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaBaixo, coordenadaFuturaCaixa);
+        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clonar(), coordenadaBaixo, coordenadaFuturaCaixa);
 
         if(novoEstado != null) {
             System.out.println("oi");
             System.out.println(novoEstado.getTabuleiro().toString());
             suc.add(novoEstado);
         }else {
-            System.out.println("tchau");
         }
 
     }
@@ -128,14 +127,13 @@ public class EstadoSokoban implements Estado, Cloneable {
         Coordenada coordenadaCima = new Coordenada(coordenadaSokoban.getY() - 1, coordenadaSokoban.getX());
         Coordenada coordenadaFuturaCaixa = new Coordenada(coordenadaSokoban.getY() - 2, coordenadaSokoban.getX());
 
-        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clone(), coordenadaCima, coordenadaFuturaCaixa);
+        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clonar(), coordenadaCima, coordenadaFuturaCaixa);
 
         if(novoEstado != null) {
             System.out.println("oi");
             System.out.println(novoEstado.getTabuleiro().toString());
             suc.add(novoEstado);
         } else {
-            System.out.println("tchau");
         }
 
     }
@@ -151,7 +149,9 @@ public class EstadoSokoban implements Estado, Cloneable {
         return tabuleiro;
     }
 
-    public EstadoSokoban clone() {
-        return new EstadoSokoban(tabuleiro);
+    public EstadoSokoban clonar() throws CloneNotSupportedException {
+        return new EstadoSokoban(tabuleiro.clonar());
     }
+
+
 }

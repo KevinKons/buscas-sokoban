@@ -49,4 +49,8 @@ public class Coordenada {
                 ", y=" + y +
                 '}';
     }
+
+    public Coordenada clonar() {
+        return new Coordenada(y, x);
+    }
 }

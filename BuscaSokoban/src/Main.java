@@ -14,7 +14,6 @@ public class Main {
         System.out.println("Insira o nome da instância que o agente deve buscar a solução");
         String instancia = sc.nextLine();
         Tabuleiro tabuleiro = LeitorArquivo.ler(instancia);
-        System.out.println(tabuleiro.toString());
 
         Nodo n = new BuscaLargura().busca(new EstadoSokoban(tabuleiro));
         if (n == null) {
