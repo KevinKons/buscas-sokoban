@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Tabuleiro implements Cloneable {
 
-    private char[][] matriz; // Y e X
+    private char[][] matriz; // X e Y
     private List<Coordenada> caixas;
     private List<Coordenada> objetivos;
     private Coordenada posSokoban;

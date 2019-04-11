@@ -27,9 +27,9 @@ public class LeitorArquivo {
             while ((str = ler.readLine()) != null) {
                 // Pegando as informações da primeira linha
                 if (primeiraLinha) {
-                    int x = (int) str.charAt(0);
-                    int y = (int) str.charAt(2);
-                    tabuleiro = new char[x][y];
+                    int y = Integer.parseInt(str.split("x")[0]);
+                    int x = Integer.parseInt(str.split("x")[1]);
+                    tabuleiro = new char[y][x];
                     primeiraLinha = false;
                 } else {
                     // Percorrendo a linha atual do arquivo texto
@@ -56,24 +56,23 @@ public class LeitorArquivo {
                     }
                     linha++;
                 }
-
             }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
         return new Tabuleiro(tabuleiro, caixas, objetivos, posSokoban);
     }
-
+//
 //    public static void main(String[] args) throws Exception {
 //        Tabuleiro tabuleiro = ler("alberto(1).txt");
 //        System.out.println("Caixas: " + tabuleiro.getCaixas().size());
 //
-        // i = 1 pois o primeiro registro do HashMap começa em 1
+////         i = 1 pois o primeiro registro do HashMap começa em 1
 //        for(int i = 0; i < tabuleiro.getCaixas().size(); i++){
 //            System.out.println("Coordenada ("+i+"): " + tabuleiro.getCaixas().get(i).toString());
 //        }
 //
 //        System.out.println(tabuleiro.toString());
-
+//
 //    }
 }
