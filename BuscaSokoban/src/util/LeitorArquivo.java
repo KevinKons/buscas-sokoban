@@ -43,7 +43,8 @@ public class LeitorArquivo {
                             caixas.add(new Coordenada(linha, i));
                         }
                         //Armazenando cada pontoObjetivo do mapa
-                        if (String.valueOf(str.charAt(i)).equals(".")) {
+                        if (String.valueOf(str.charAt(i)).equals(".") ||
+                                String.valueOf(str.charAt(i)).equals("+")) {
                             //A key é a quantidade de caixas + 1
                             objetivos.add(new Coordenada(linha, i));
                         }
