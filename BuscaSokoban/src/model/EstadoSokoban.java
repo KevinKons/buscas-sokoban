@@ -1,7 +1,9 @@
 package model;
 
 import jomi.Estado;
+import jomi.Heuristica;
 import util.AtribuiNovoElemento;
+import util.CalculaHeuristica;
 import util.GeradorEstado;
 import util.Verificacoes;
 
@@ -10,7 +12,7 @@ import java.util.List;
 
 import static util.Verificacoes.contemDeadSquare;
 
-public class EstadoSokoban implements Estado, Cloneable {
+public class EstadoSokoban implements Estado, Heuristica, Cloneable {
 
     @Override
     public String getDescricao() {
@@ -154,4 +156,33 @@ public class EstadoSokoban implements Estado, Cloneable {
     }
 
 
+    @Override
+    public int h() {
+        return h1();
+    }
+
+    /*Manhattan distance*/
+    public int h1() {
+        int distanciaTotal = 0;
+        for(Coordenada caixa : tabuleiro.getCaixas())
+            distanciaTotal += CalculaHeuristica.manhattanDistance(caixa, localizaObjetivoMaisProximo(caixa));
+
+        return distanciaTotal;
+    }
+
+    public Coordenada localizaObjetivoMaisProximo(Coordenada caixa) {
+        Coordenada coordenadaEscolhida = null;
+        double distanciaCoordenadaEscolhida = 1000;
+
+        for(Coordenada objetivo : tabuleiro.getObjetivos()) {
+            double distancia =
+                    Math.hypot(Math.abs(objetivo.getX() - caixa.getX()), Math.abs(objetivo.getY() - caixa.getY()));
+            if(distancia < distanciaCoordenadaEscolhida) {
+                distanciaCoordenadaEscolhida = distancia;
+                coordenadaEscolhida = objetivo;
+            }
+        }
+
+        return coordenadaEscolhida;
+    }
 }

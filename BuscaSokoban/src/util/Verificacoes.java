@@ -24,6 +24,18 @@ public class Verificacoes {
         return false;
     }
 
+
+    public static boolean ehObjetivo(Coordenada coordenada, char[][] matriz) {
+        try {
+            if (matriz[coordenada.getY()][coordenada.getX()] == '.')
+                return true;
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            return false;
+//        } finally {
+        }
+            return false;
+    }
+
     /**
      * Verificação de Deadlocks
      **/

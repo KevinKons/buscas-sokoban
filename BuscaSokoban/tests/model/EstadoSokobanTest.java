@@ -20,14 +20,15 @@ public class EstadoSokobanTest {
         char[][] matriz = {
                 {'#','#','#','#','#','#','#','#','#','#'},
                 {'#',' ',' ',' ',' ',' ',' ',' ',' ','#'},
-                {'#','.',' ','$','@',' ',' ',' ',' ','#'},
+                {'#','.',' ','$',' ',' ',' ',' ','$','#'},
                 {'#',' ',' ',' ',' ',' ',' ',' ',' ','#'},
                 {'#','#','#','#','#','#','#','#','#','#'}
         };
         List<Coordenada> caixas = new ArrayList<>();
         // Return matriz[][], HashMap de caixas e Coordenada do Player
         estadoSokoban = new EstadoSokoban(new Tabuleiro(matriz, caixas, new Coordenada(2, 4)));
-        estadoSokoban.getTabuleiro().setCaixas(Arrays.asList(new Coordenada(2, 3)));
+        estadoSokoban.getTabuleiro().setCaixas(Arrays.asList(new Coordenada(2, 3), new Coordenada(2, 8)));
+        estadoSokoban.getTabuleiro().setObjetivos(Arrays.asList(new Coordenada(2, 1), new Coordenada(1, 5)));
     }
 
     @Test
@@ -60,6 +61,17 @@ public class EstadoSokobanTest {
 
     @Test
     public void andarParaDireita() throws CloneNotSupportedException {
-        estadoSokoban.andarParaDireita(null);
+        estadoSokoban.andarParaDireita  (null);
+    }
+
+    @Test
+    public void localizaObjetivoMaisProximo() {
+        Coordenada obj = estadoSokoban.localizaObjetivoMaisProximo(new Coordenada(2, 4));
+        System.out.println(obj.getY() + " " + obj.getX());
+    }
+
+    @Test
+    public void manhattanDistance() {
+        System.out.println(estadoSokoban.h1());
     }
 }
