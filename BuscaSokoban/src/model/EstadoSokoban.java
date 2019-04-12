@@ -27,15 +27,16 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
         this.tabuleiro = tabuleiro;
     }
 
-    public EstadoSokoban() { }
+    public EstadoSokoban() {
+    }
 
     @Override
     public boolean ehMeta() {
         char[][] matriz = tabuleiro.getMatriz();
         int qntCaixaNaMeta = 0;
 
-        for(char[] vetor : matriz)
-            for(char elemento : vetor)
+        for (char[] vetor : matriz)
+            for (char elemento : vetor)
                 switch (elemento) {
                     case '$':
                         return false;
@@ -45,7 +46,7 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
                         return false;
                     case '*':
                         qntCaixaNaMeta++;
-                        if(qntCaixaNaMeta == tabuleiro.getCaixas().size())
+                        if (qntCaixaNaMeta == tabuleiro.getCaixas().size())
                             return true;
                 }
 
@@ -77,50 +78,28 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
 
     public void andarParaDireita(List<Estado> suc) throws CloneNotSupportedException {
         Coordenada coordenadaSokoban = tabuleiro.getPosSokoban();
-        Coordenada coordenadaEsquerda =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() + 1);
-        Coordenada coordenadaFuturaCaixa =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() + 2);
+        Coordenada coordenadaEsquerda = new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() + 1);
+        Coordenada coordenadaFuturaCaixa = new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() + 2);
 
-        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clonar(), coordenadaEsquerda, coordenadaFuturaCaixa);
-
-        if(novoEstado != null) {
-            System.out.println("oi");
-            System.out.println(novoEstado.getTabuleiro().toString());
-            suc.add(novoEstado);
-        }else {
-        }
+        newState(suc, coordenadaEsquerda, coordenadaFuturaCaixa);
 
     }
 
     public void andarParaEsquerda(List<Estado> suc) throws CloneNotSupportedException {
         Coordenada coordenadaSokoban = tabuleiro.getPosSokoban();
-        Coordenada coordenadaEsquerda =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() - 1);
-        Coordenada coordenadaFuturaCaixa =  new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() - 2);
+        Coordenada coordenadaEsquerda = new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() - 1);
+        Coordenada coordenadaFuturaCaixa = new Coordenada(coordenadaSokoban.getY(), coordenadaSokoban.getX() - 2);
 
-        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clonar(), coordenadaEsquerda, coordenadaFuturaCaixa);
-
-        if(novoEstado != null) {
-            System.out.println("oi");
-            System.out.println(novoEstado.getTabuleiro().toString());
-            suc.add(novoEstado);
-        }else {
-        }
+        newState(suc, coordenadaEsquerda, coordenadaFuturaCaixa);
     }
-
 
 
     public void andarParaBaixo(List<Estado> suc) throws CloneNotSupportedException {
         Coordenada coordenadaSokoban = tabuleiro.getPosSokoban();
-        Coordenada coordenadaBaixo =  new Coordenada(coordenadaSokoban.getY() + 1, coordenadaSokoban.getX());
-        Coordenada coordenadaFuturaCaixa =  new Coordenada(coordenadaSokoban.getY() + 2, coordenadaSokoban.getX());
+        Coordenada coordenadaBaixo = new Coordenada(coordenadaSokoban.getY() + 1, coordenadaSokoban.getX());
+        Coordenada coordenadaFuturaCaixa = new Coordenada(coordenadaSokoban.getY() + 2, coordenadaSokoban.getX());
 
-        EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clonar(), coordenadaBaixo, coordenadaFuturaCaixa);
-
-        if(novoEstado != null) {
-            System.out.println("oi");
-            System.out.println(novoEstado.getTabuleiro().toString());
-            suc.add(novoEstado);
-        }else {
-        }
+        newState(suc, coordenadaBaixo, coordenadaFuturaCaixa);
 
     }
 
@@ -129,23 +108,21 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
         Coordenada coordenadaCima = new Coordenada(coordenadaSokoban.getY() - 1, coordenadaSokoban.getX());
         Coordenada coordenadaFuturaCaixa = new Coordenada(coordenadaSokoban.getY() - 2, coordenadaSokoban.getX());
 
+        newState(suc, coordenadaCima, coordenadaFuturaCaixa);
+
+    }
+
+    private void newState(List<Estado> suc, Coordenada coordenadaCima, Coordenada coordenadaFuturaCaixa) throws CloneNotSupportedException {
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clonar(), coordenadaCima, coordenadaFuturaCaixa);
 
-        if(novoEstado != null) {
+        if (novoEstado != null && !Verificacoes.contemDeadSquare(novoEstado.getTabuleiro()) && !Verificacoes.contemClosedDiagonal(novoEstado.getTabuleiro())) {
             System.out.println("oi");
             System.out.println(novoEstado.getTabuleiro().toString());
             suc.add(novoEstado);
         } else {
         }
-
     }
     //easy(1).txt
-
-    /** returna true se o estado e valido */
-    private boolean ehValido(Tabuleiro tabuleiro) {
-        return contemDeadSquare(tabuleiro);
-    }
-
 
     public Tabuleiro getTabuleiro() {
         return tabuleiro;
@@ -164,7 +141,7 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
     /*Manhattan distance*/
     public int h1() {
         int distanciaTotal = 0;
-        for(Coordenada caixa : tabuleiro.getCaixas())
+        for (Coordenada caixa : tabuleiro.getCaixas())
             distanciaTotal += CalculaHeuristica.manhattanDistance(caixa, localizaObjetivoMaisProximo(caixa));
 
         return distanciaTotal;
@@ -174,10 +151,10 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
         Coordenada coordenadaEscolhida = null;
         double distanciaCoordenadaEscolhida = 1000;
 
-        for(Coordenada objetivo : tabuleiro.getObjetivos()) {
+        for (Coordenada objetivo : tabuleiro.getObjetivos()) {
             double distancia =
                     Math.hypot(Math.abs(objetivo.getX() - caixa.getX()), Math.abs(objetivo.getY() - caixa.getY()));
-            if(distancia < distanciaCoordenadaEscolhida) {
+            if (distancia < distanciaCoordenadaEscolhida) {
                 distanciaCoordenadaEscolhida = distancia;
                 coordenadaEscolhida = objetivo;
             }
