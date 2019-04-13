@@ -22,7 +22,7 @@ public class Main {
 
     }
 
-//    @Timeable(limit = 5, unit = TimeUnit.SECONDS)
+//    @Timeable(limit = 5, unit = TimeUnit.SECONDS) f
     private static void executar() throws IOException, NullPointerException {
         Scanner sc = new Scanner(System.in);
 
