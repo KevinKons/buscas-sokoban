@@ -62,17 +62,4 @@ public class LeitorArquivo {
         }
         return new Tabuleiro(tabuleiro, caixas, objetivos, posSokoban);
     }
-//
-//    public static void main(String[] args) throws Exception {
-//        Tabuleiro tabuleiro = ler("alberto(1).txt");
-//        System.out.println("Caixas: " + tabuleiro.getCaixas().size());
-//
-////         i = 1 pois o primeiro registro do HashMap começa em 1
-//        for(int i = 0; i < tabuleiro.getCaixas().size(); i++){
-//            System.out.println("Coordenada ("+i+"): " + tabuleiro.getCaixas().get(i).toString());
-//        }
-//
-//        System.out.println(tabuleiro.toString());
-//
-//    }
 }
