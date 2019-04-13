@@ -4,6 +4,7 @@ import model.Coordenada;
 import model.Tabuleiro;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class LeitorArquivo {
 
-    public static Tabuleiro ler(String nomeArquivo) {
+    public static Tabuleiro ler(String nomeArquivo) throws IOException {
 
         char[][] tabuleiro = new char[0][];
         List<Coordenada> caixas = new ArrayList<>();
@@ -20,46 +21,42 @@ public class LeitorArquivo {
         int linha = 0;
         boolean primeiraLinha = true;
 
-        try {
-            BufferedReader ler = new BufferedReader(new FileReader("../" + nomeArquivo));
-            String str;
+        BufferedReader ler = new BufferedReader(new FileReader("../" + nomeArquivo));
+        String str;
 
-            while ((str = ler.readLine()) != null) {
-                // Pegando as informações da primeira linha
-                if (primeiraLinha) {
-                    int x = (int) str.charAt(0);
-                    int y = (int) str.charAt(2);
-                    tabuleiro = new char[x][y];
-                    primeiraLinha = false;
-                } else {
-                    // Percorrendo a linha atual do arquivo texto
-                    for (int i = 0; i < str.length(); i++) {
-                        // Gravando as informações do arquivo texto na matriz de Char
-                        tabuleiro[linha][i] = str.charAt(i);
-                        //Armazenando cada caixa do mapa
-                        if (String.valueOf(str.charAt(i)).equals("$") ||
-                                String.valueOf(str.charAt(i)).equals("*")) {
-                            //A key é a quantidade de caixas + 1
-                            caixas.add(new Coordenada(linha, i));
-                        }
-                        //Armazenando cada pontoObjetivo do mapa
-                        if (String.valueOf(str.charAt(i)).equals(".") ||
-                                String.valueOf(str.charAt(i)).equals("+")) {
-                            //A key é a quantidade de caixas + 1
-                            objetivos.add(new Coordenada(linha, i));
-                        }
-                        //Pegando a coordenada do player Sokoban
-                        if (String.valueOf(str.charAt(i)).equals("@") ||
-                                String.valueOf(str.charAt(i)).equals("+")) {
-                            posSokoban = new Coordenada(linha, i);
-                        }
+        while ((str = ler.readLine()) != null) {
+            // Pegando as informações da primeira linha
+            if (primeiraLinha) {
+                int x = (int) str.charAt(0);
+                int y = (int) str.charAt(2);
+                tabuleiro = new char[x][y];
+                primeiraLinha = false;
+            } else {
+                // Percorrendo a linha atual do arquivo texto
+                for (int i = 0; i < str.length(); i++) {
+                    // Gravando as informações do arquivo texto na matriz de Char
+                    tabuleiro[linha][i] = str.charAt(i);
+                    //Armazenando cada caixa do mapa
+                    if (String.valueOf(str.charAt(i)).equals("$") ||
+                            String.valueOf(str.charAt(i)).equals("*")) {
+                        //A key é a quantidade de caixas + 1
+                        caixas.add(new Coordenada(linha, i));
                     }
-                    linha++;
+                    //Armazenando cada pontoObjetivo do mapa
+                    if (String.valueOf(str.charAt(i)).equals(".") ||
+                            String.valueOf(str.charAt(i)).equals("+")) {
+                        //A key é a quantidade de caixas + 1
+                        objetivos.add(new Coordenada(linha, i));
+                    }
+                    //Pegando a coordenada do player Sokoban
+                    if (String.valueOf(str.charAt(i)).equals("@") ||
+                            String.valueOf(str.charAt(i)).equals("+")) {
+                        posSokoban = new Coordenada(linha, i);
+                    }
                 }
-
+                linha++;
             }
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+
         }
         return new Tabuleiro(tabuleiro, caixas, objetivos, posSokoban);
     }

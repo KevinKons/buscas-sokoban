@@ -61,9 +61,6 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
     public List<Estado> sucessores() {
         List<Estado> suc = new LinkedList<Estado>();
 
-        System.out.println("estado inicial");
-        System.out.println(tabuleiro.toString());
-
         try {
             andarParaCima(suc);
             andarParaBaixo(suc);
@@ -82,12 +79,8 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
 
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clonar(), coordenadaEsquerda, coordenadaFuturaCaixa);
 
-        if(novoEstado != null) {
-            System.out.println("oi");
-            System.out.println(novoEstado.getTabuleiro().toString());
+        if(novoEstado != null)
             suc.add(novoEstado);
-        }else {
-        }
 
     }
 
@@ -98,12 +91,8 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
 
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clonar(), coordenadaEsquerda, coordenadaFuturaCaixa);
 
-        if(novoEstado != null) {
-            System.out.println("oi");
-            System.out.println(novoEstado.getTabuleiro().toString());
+        if(novoEstado != null)
             suc.add(novoEstado);
-        }else {
-        }
     }
 
 
@@ -115,12 +104,8 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
 
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clonar(), coordenadaBaixo, coordenadaFuturaCaixa);
 
-        if(novoEstado != null) {
-            System.out.println("oi");
-            System.out.println(novoEstado.getTabuleiro().toString());
+        if(novoEstado != null)
             suc.add(novoEstado);
-        }else {
-        }
 
     }
 
@@ -131,12 +116,8 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
 
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clonar(), coordenadaCima, coordenadaFuturaCaixa);
 
-        if(novoEstado != null) {
-            System.out.println("oi");
-            System.out.println(novoEstado.getTabuleiro().toString());
+        if(novoEstado != null)
             suc.add(novoEstado);
-        } else {
-        }
 
     }
     //easy(1).txt
