@@ -5,11 +5,24 @@ import model.Tabuleiro;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LeitorArquivo {
+
+    public static void gravar(String informacao) {
+
+        try {
+            FileWriter writer = new FileWriter("output.txt", true);
+            writer.write(informacao);
+            writer.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
 
     public static Tabuleiro ler(String nomeArquivo) {
 
@@ -55,6 +68,9 @@ public class LeitorArquivo {
                         }
                     }
                     linha++;
+                }
+                if(str.equals(" ")){
+                    break;
                 }
             }
         } catch (IOException ex) {
