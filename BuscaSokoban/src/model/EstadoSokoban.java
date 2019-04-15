@@ -106,12 +106,9 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
     private void newState(List<Estado> suc, Coordenada coordenadaCima, Coordenada coordenadaFuturaCaixa) throws CloneNotSupportedException {
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clonar(), coordenadaCima, coordenadaFuturaCaixa);
 
-        if (novoEstado != null) {
+        if (novoEstado != null)
             if(!Verificacoes.contemDeadSquare(novoEstado.getTabuleiro(), caixas, objetivos) && !Verificacoes.contemClosedDiagonal(novoEstado.getTabuleiro(), caixas, objetivos))
                 suc.add(novoEstado);
-        }
-
-
     }
 
     public Tabuleiro getTabuleiro() {
@@ -121,7 +118,6 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
     public EstadoSokoban clonar() {
         return new EstadoSokoban(tabuleiro.clonar());
     }
-
 
     @Override
     public int h() {
