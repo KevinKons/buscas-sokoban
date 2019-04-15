@@ -29,64 +29,57 @@ public class Main {
 
     //    @Timeable(limit = 5, unit = TimeUnit.SECONDS) f
     private static void executar() throws IOException, NullPointerException, CloneNotSupportedException {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Insira o nome da instância que o agente deve solucionar");
-        String instancia = sc.nextLine();
-        Tabuleiro tabuleiro = LeitorArquivo.ler(instancia);
-
-        System.out.println("Insira o tipo de busca que deseja utilizar: \n" +
-                "1 - Busca em Largura \n" +
-                "2 - Busca em profundidade \n" +
-                "3 - Busca em profundidade iterativa \n" +
-                "4 - Busca A*");
-        int buscaEscolhida = Integer.parseInt(sc.nextLine());
-
-        Busca busca = null;
-        switch(buscaEscolhida) {
-            case 1:
-                busca = new BuscaLargura();
-                break;
-            case 2:
-                busca = new BuscaProfundidade();
-                break;
-            case 3:
-                busca = new BuscaIterativo();
-                break;
-            case 4:
-                busca = new AEstrela();
-                break;
-        }
-        if(busca == null)
-            throw new NullPointerException();
-
-        Nodo n = null;
-        try {
-            long tempoInicio = System.currentTimeMillis();
-            n = busca.busca(new EstadoSokoban(tabuleiro));
-            if (n == null) {
-                System.out.println("sem solucao!");
-            } else {
-                System.out.println("solucao:\n" + n.montaCaminho() + "\n\n");
-            }
-            long tempoFinal = System.currentTimeMillis();
-            System.out.println(tempoFinal - tempoInicio);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-//        System.out.println("Executando instâncias");
+//        Scanner sc = new Scanner(System.in);
 //
-//        /*
-//         * Para cada instância:
-//         *
-//         * 1 - Aplicar um algoritmo
-//         * 2 - Gravar hora inicio e hora fim
-//         * 3 - Armazenar no arquivo.txt de saída
-//         */
-//        List<String> instancias = new ArrayList<>();
-//        instancias.add("easy(1).txt");
+//        System.out.println("Insira o nome da instância que o agente deve solucionar");
+//        String instancia = sc.nextLine();
+//        Tabuleiro tabuleiro = LeitorArquivo.ler(instancia);
+//
+//        System.out.println("Insira o tipo de busca que deseja utilizar: \n" +
+//                "1 - Busca em Largura \n" +
+//                "2 - Busca em profundidade \n" +
+//                "3 - Busca em profundidade iterativa \n" +
+//                "4 - Busca A*");
+//        int buscaEscolhida = Integer.parseInt(sc.nextLine());
+//
+//        Busca busca = null;
+//        switch(buscaEscolhida) {
+//            case 1:
+//                busca = new BuscaLargura();
+//                break;
+//            case 2:
+//                busca = new BuscaProfundidade();
+//                break;
+//            case 3:
+//                busca = new BuscaIterativo();
+//                break;
+//            case 4:
+//                busca = new AEstrela();
+//                break;
+//        }
+//        if(busca == null)
+//            throw new NullPointerException();
+//
+//        Nodo n = null;
+//        try {
+//            long tempoInicio = System.currentTimeMillis();
+//            n = busca.busca(new EstadoSokoban(tabuleiro));
+//            if (n == null) {
+//                System.out.println("sem solucao!");
+//            } else {
+//                System.out.println("solucao:\n" + n.montaCaminho() + "\n\n");
+//            }
+//            long tempoFinal = System.currentTimeMillis();
+//            System.out.println(tempoFinal - tempoInicio);
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+        System.out.println("Executando instâncias");
+
+        List<String> instancias = new ArrayList<>();
+        instancias.add("easy(1).txt");
 //        instancias.add("ac_easy(7).txt");
 //        instancias.add("moderate(5).txt");
 //        instancias.add("moderate(7).txt");
@@ -96,41 +89,42 @@ public class Main {
 //        instancias.add("alberto(1).txt");
 //        instancias.add("alberto(3).txt");
 //        instancias.add("alberto(14).txt");
-//
-//        List<Busca> buscas = new ArrayList<>();
-//        buscas.add(new BuscaLargura());
-//        buscas.add(new BuscaProfundidade());
-//        buscas.add(new BuscaIterativo());
-//        buscas.add(new AEstrela());
-//
-//
-//        for (String instancia : instancias) {
-//
-//            LeitorArquivo.gravar("\nNome: " + instancia);
-//            Tabuleiro tabuleiro = LeitorArquivo.ler(instancia);
-//
-//            for (int i = 0; i < 4; i++) {
-//
-//                Busca busca = defineBusca(i);
-//
-//                ExecutarBusca exec = new ExecutarBusca(busca, tabuleiro.clonar());
-//                long tempoInicial = System.currentTimeMillis();
-//                exec.start();
-//
-//                while (true) {
-//                    long tempoAtual = System.currentTimeMillis();
-//
-//                    if ((tempoAtual - tempoInicial) >= 1800000) {
-//                        exec.stop();
-//                        LeitorArquivo.gravar("\nbusca: sem solução");
-//                        break;
-//                    }else if(!exec.isAlive()){
-//                        break;
-//                    }
-//                }
-//
-//            }
-//        }
+
+        List<Busca> buscas = new ArrayList<>();
+        buscas.add(new BuscaLargura());
+        buscas.add(new BuscaProfundidade());
+        buscas.add(new BuscaIterativo());
+        buscas.add(new AEstrela());
+
+        LeitorArquivo.gravar("Tamanho do estado (classe EstadoSokoban):" + EstadoSokoban.class);
+
+        for (String instancia : instancias) {
+
+            LeitorArquivo.gravar("\nNome: " + instancia);
+            Tabuleiro tabuleiro = LeitorArquivo.ler(instancia);
+
+            for (int i = 0; i < 4; i++) {
+
+                Busca busca = defineBusca(i);
+
+                ExecutarBusca exec = new ExecutarBusca(busca, tabuleiro.clonar(), nomeBusca(i));
+                long tempoInicial = System.currentTimeMillis();
+                exec.start();
+
+                while (true) {
+                    long tempoAtual = System.currentTimeMillis();
+
+                    if ((tempoAtual - tempoInicial) >= 1800000) {
+                        exec.stop();
+                        LeitorArquivo.gravar("\nbusca: sem solução");
+                        break;
+                    } else if (!exec.isAlive()) {
+                        break;
+                    }
+                }
+
+            }
+        }
     }
 
     private static Busca defineBusca(int i) {
@@ -145,5 +139,21 @@ public class Main {
                 return new AEstrela();
         }
         return null;
+    }
+
+    private static String nomeBusca(int busca) {
+
+        switch (busca) {
+            case 0:
+                return "Largura";
+            case 1:
+                return "Profundidade";
+            case 2:
+                return "Profundidade Iterativa";
+            case 3:
+                return "Busca A*";
+                default: return "Instancia não cadastrada";
+        }
+
     }
 }

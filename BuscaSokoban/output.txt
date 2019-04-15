@@ -1,7 +1,6 @@
 
 Nome: easy(1).txt
-busca: 308
-busca: 66
-busca: 68
-busca: 8
-Nome: ac_easy(7).txt
+Largura: 428ms com 28919 nodos visitados
+Profundidade: 66ms com 37531 nodos visitados
+Profundidade Iterativa: 129ms com 11452 nodos visitados
+Busca A*: 190ms com 28919 nodos visitados
