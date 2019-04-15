@@ -10,7 +10,7 @@ import util.Verificacoes;
 import java.util.LinkedList;
 import java.util.List;
 
-import static util.Verificacoes.contemDeadSquare;
+//import static util.Verificacoes.contemDeadSquare;
 
 public class EstadoSokoban implements Estado, Heuristica, Cloneable {
 
@@ -44,13 +44,13 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
                         return false;
                     case '+':
                         return false;
-                    case '*':
-                        qntCaixaNaMeta++;
-                        if (qntCaixaNaMeta == tabuleiro.getCaixas().size())
-                            return true;
+//                    case '*':
+//                        qntCaixaNaMeta++;
+//                        if (qntCaixaNaMeta == tabuleiro.getCaixas().size())
+//                            return true;
                 }
 
-        return false;
+        return true;
     }
 
     @Override
@@ -112,7 +112,7 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
     private void newState(List<Estado> suc, Coordenada coordenadaCima, Coordenada coordenadaFuturaCaixa) throws CloneNotSupportedException {
         EstadoSokoban novoEstado = GeradorEstado.geraNovoEstado(this.clonar(), coordenadaCima, coordenadaFuturaCaixa);
 
-        if (novoEstado != null && !Verificacoes.contemDeadSquare(novoEstado.getTabuleiro()) && !Verificacoes.contemClosedDiagonal(novoEstado.getTabuleiro()))
+        if (novoEstado != null /*&& !Verificacoes.contemDeadSquare(novoEstado.getTabuleiro()) && !Verificacoes.contemClosedDiagonal(novoEstado.getTabuleiro())*/)
             suc.add(novoEstado);
     }
     //easy(1).txt
@@ -128,31 +128,32 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
 
     @Override
     public int h() {
-        return h1();
+//        return h1();
+        return 1;
     }
 
     /*Manhattan distance*/
-    public int h1() {
-        int distanciaTotal = 0;
-        for (Coordenada caixa : tabuleiro.getCaixas())
-            distanciaTotal += CalculaHeuristica.manhattanDistance(caixa, localizaObjetivoMaisProximo(caixa));
-
-        return distanciaTotal;
-    }
-
-    public Coordenada localizaObjetivoMaisProximo(Coordenada caixa) {
-        Coordenada coordenadaEscolhida = null;
-        double distanciaCoordenadaEscolhida = 1000;
-
-        for (Coordenada objetivo : tabuleiro.getObjetivos()) {
-            double distancia =
-                    Math.hypot(Math.abs(objetivo.getX() - caixa.getX()), Math.abs(objetivo.getY() - caixa.getY()));
-            if (distancia < distanciaCoordenadaEscolhida) {
-                distanciaCoordenadaEscolhida = distancia;
-                coordenadaEscolhida = objetivo;
-            }
-        }
-
-        return coordenadaEscolhida;
-    }
+//    public int h1() {
+//        int distanciaTotal = 0;
+//        for (Coordenada caixa : tabuleiro.getCaixas())
+//            distanciaTotal += CalculaHeuristica.manhattanDistance(caixa, localizaObjetivoMaisProximo(caixa));
+//
+//        return distanciaTotal;
+//    }
+//
+//    public Coordenada localizaObjetivoMaisProximo(Coordenada caixa) {
+//        Coordenada coordenadaEscolhida = null;
+//        double distanciaCoordenadaEscolhida = 1000;
+//
+//        for (Coordenada objetivo : tabuleiro.getObjetivos()) {
+//            double distancia =
+//                    Math.hypot(Math.abs(objetivo.getX() - caixa.getX()), Math.abs(objetivo.getY() - caixa.getY()));
+//            if (distancia < distanciaCoordenadaEscolhida) {
+//                distanciaCoordenadaEscolhida = distancia;
+//                coordenadaEscolhida = objetivo;
+//            }
+//        }
+//
+//        return coordenadaEscolhida;
+//    }
 }

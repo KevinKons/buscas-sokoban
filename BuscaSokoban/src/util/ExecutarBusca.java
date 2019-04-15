@@ -15,7 +15,7 @@ public class ExecutarBusca extends Thread {
         this.tabuleiro = tabuleiro;
     }
 
-    @Override
+//    @Override
     public void run() {
 
         Nodo n = null;

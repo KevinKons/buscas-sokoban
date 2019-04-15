@@ -1,16 +1,7 @@
 
 Nome: easy(1).txt
-busca: 344
-busca: 321
+busca: 308
 busca: 66
-busca: 9
-Nome: easy(4).txt
-busca: sem soluÃ§Ã£o
-busca: sem soluÃ§Ã£o
-busca: sem soluÃ§Ã£o
-busca: sem soluÃ§Ã£o
-Nome: alberto(1).txt
-busca: sem soluÃ§Ã£o
-busca: sem soluÃ§Ã£o
-busca: sem soluÃ§Ã£o
-busca: sem soluÃ§Ã£o
+busca: 68
+busca: 8
+Nome: ac_easy(7).txt
