@@ -57,8 +57,6 @@ public class Main {
         buscas.add(new BuscaIterativo());
         buscas.add(new AEstrela());
 
-        LeitorArquivo.gravar("Tamanho do estado (classe EstadoSokoban):" + EstadoSokoban.class);
-
         for (String instancia : instancias) {
 
             LeitorArquivo.gravar("\nNome: " + instancia);
