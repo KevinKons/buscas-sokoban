@@ -122,7 +122,6 @@ public class EstadoSokoban implements Estado, Heuristica, Cloneable {
         return new EstadoSokoban(tabuleiro.clonar());
     }
 
-
     @Override
     public int h() {
         setaListaCaixasObjetivos();
