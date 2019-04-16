@@ -1,0 +1,9 @@
+
+Nome: easy(1).txt
+Largura: 219ms com 28915 nodos visitados
+Profundidade: 62ms com 37517 nodos visitados
+Profundidade Iterativa: 94ms com 11452 nodos visitados
+Busca A*: 0ms com 782 nodos visitados
+Nome: ac_easy(7).txt
+busca: sem soluÃ§Ã£o
+Nome: moderate(5).txt
